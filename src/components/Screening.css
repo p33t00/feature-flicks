@@ -1,56 +1,86 @@
-.screening {
-	border-radius: .475rem;
-	background-color: #D6D6D6;
+.screening .card-body {
+	padding-bottom: 0;
 }
 
-.screening img.img-thumbnail {
-	background-color: #D6D6D6;
-	border: none;
-	max-height: 100%;
-	width: auto;
-	border-top-left-radius: .475rem;
-	border-bottom-left-radius: .475rem;
-	float: left;
+.card-footer:last-child {
+	width: 100%;
+	margin: 0 auto;
+	flex-direction: column;
+}
+
+.card-footer .col {
 	padding: 0;
-	padding-right: 15px;
 }
 
-.screening .info {
-	padding-top: 10px;
-	padding-right: 15px;
-	/*padding: 45px;*/
-	/*max-height: 80px;*/
+.screening.card {
+	border: 0;
+	border-radius: 0;
+	background-color: #D6D6D6;
+	display: flex;
+}
+
+
+.screening img.card-img {
+	/*width: auto;*/
+	border-radius: 0;
+	padding: 0;
 }
 
 .screening .description-card {
-	max-height: 140px;
+	display: -webkit-box;
+		-webkit-line-clamp: 5;
+		-webkit-box-orient: vertical;
 	overflow: hidden;
+	text-overflow: ellipsis;
 
 }
 
-/*.screening .description-card::after {
-	position: absolute;
-  content: '...';
-  bottom: 0;
-  right: 1rem;
-  z-index: 1;
-}*/
-
-.screening .info a {
+.screening .card-footer button {
+	margin-top: 10px;
+	width: 100%;
   border-radius: 0px;
   border: 0;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
+  font-s ize: 1em;
   font-weight: 500;
   font-family: inherit;
   background-color: #FFD100;
   cursor: pointer;
   transition: border-color 0.25s;
 }
-.screening .info a:hover {
+.screening .card-footer button:hover {
   background-color: #ffd80f;
 }
-.screening .info a:focus,
-.screening .info a:focus-visible {
+.screening .card-footer button:focus,
+.screening .card-footer button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (min-width: 992px) {
+  .screening.card {
+    flex-direction: row;
+  }
+
+  .screening img.card-img {
+  	width: auto;
+  }
+}
+
+
+@media (min-width: 1200px) {
+	.screening .description-card {
+		display: -webkit-box;
+		-webkit-line-clamp: 6;
+		-webkit-box-orient: vertical;
+	}
+}
+
+@media (min-width: 476px) {
+  .screening .card-footer button {
+  	margin: 0;
+    width: auto;
+  }
+
+  .card-footer:last-child {
+  	flex-direction: row;
+	}
 }

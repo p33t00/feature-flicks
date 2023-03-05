@@ -1,7 +1,9 @@
-import { useState } from 'react'
+import { Routes, Route } from 'react-router-dom'
+// import { useState } from 'react'
 import { Navbar, Container, Stack } from 'react-bootstrap'
 import './App.css'
-import Screening from './components/Screening.jsx'
+import Main from './components/pages/Main.jsx'
+import Booking from './components/pages/Booking.jsx'
 
 function App() {
   // const [count, setCount] = useState(0)
@@ -19,12 +21,11 @@ function App() {
         </Container>
       </Navbar>
       <Container>
-        <Stack gap={4}>
-          <Screening />
-          <Screening />
-        </Stack>
-      </Container>
-                
+        <Routes>
+          <Route path='/' element={<Main />} exact/>
+          <Route path='/booking' element={<Booking />} />
+        </Routes>
+      </Container>        
     </div>
   )
 }
