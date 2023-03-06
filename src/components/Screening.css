@@ -40,20 +40,20 @@
 	width: 100%;
   border-radius: 0px;
   border: 0;
-  font-s ize: 1em;
-  font-weight: 500;
-  font-family: inherit;
+  /*font-size: 1em;*/
+  /*font-weight: 500;*/
+  /*font-family: inherit;*/
   background-color: #FFD100;
   cursor: pointer;
-  transition: border-color 0.25s;
+  /*transition: border-color 0.25s;*/
 }
 .screening .card-footer button:hover {
   background-color: #ffd80f;
 }
-.screening .card-footer button:focus,
+.screenin/*g .card-footer button:focus,
 .screening .card-footer button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
-}
+}*/
 
 @media (min-width: 992px) {
   .screening.card {

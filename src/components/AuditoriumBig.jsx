@@ -1,11 +1,7 @@
-import { Container, Row, Col } from 'react-bootstrap'
+import Container from 'react-bootstrap/Container'
+import './AuditoriumBig.css'
 
-import './Auditorium.css'
-
-const cols = 10
-const rows = 5
-
-export default function Auditorium() {
+export default function AuditoriumBig() {
 	return (
 		<Container className="auditorium-big">
 			<div className="row-seat row-A">

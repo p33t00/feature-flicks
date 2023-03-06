@@ -1,0 +1,7 @@
+function getScreanings() {
+
+}
+
+function getMovies() {
+	
+}

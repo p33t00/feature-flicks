@@ -38,7 +38,7 @@ export default function Screening() {
 		      			<p className="my-0"><span>Duration: 120 min.</span></p>
 				      	<code>October 12 Wednesday - 19:50</code>
 		      		</Col>
-		      		<Col className="align-self-center">
+		      		<Col xs={3} className="col align-self-center">
 			      		<Link to="/booking">
 					        <Button className="float-end" variant="warning">Book</Button>{' '}
 			      		</Link>
