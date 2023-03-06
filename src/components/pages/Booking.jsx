@@ -2,12 +2,16 @@ import './Booking.css'
 import AuditoriumBig from '../AuditoriumBig.jsx'
 import RangeSenior from '../RangeSenior.jsx'
 import RangeChildren from '../RangeChildren.jsx'
+import BookingConfirm from '../BookingConfirm.jsx'
 import Button from 'react-bootstrap/Button'
+
+import { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 
 export default function Booking() {
 	const navigate = useNavigate()
-	const { movieId } = useParams();
+	const { movieId } = useParams()
+	const [modalShow, setModalShow] = useState(false)
 
 	return (
 		<div className="booking">
@@ -18,8 +22,13 @@ export default function Booking() {
 			<RangeSenior />
 			<hr/>
 			<RangeChildren />
-			<Button className="btn-book" onClick={() => {console.log('hellooooo...')}}>Book Tickets</Button>
+			<Button className="btn-book" onClick={() => setModalShow(true)}>Book Tickets</Button>
 			<Button variant="secondary" onClick={() => navigate('/')}>Cancel</Button>
+
+			<BookingConfirm
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+      />
 		</div>
 	)
 }
