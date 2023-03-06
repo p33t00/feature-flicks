@@ -1,0 +1,8 @@
+.screen-side {
+	color: white;
+	text-align: center;
+	border-bottom: 1px solid white;
+	border-bottom-left-radius: 50px;
+	border-bottom-right-radius: 50px;
+	margin-bottom: 70px;
+}

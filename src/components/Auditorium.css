@@ -1,0 +1,67 @@
+.container.auditorium-big {
+	width: 100%;
+	min-width: 360px;
+}
+
+.row-seat > span {
+	font-weight: bold;
+	float: none;
+	color: white;
+}
+
+.row-seat > div div{
+	display: inline-block;
+	text-align: center;
+	margin: 1%;
+	height: auto;
+	width: 5%;
+	min-width: 26px;
+	color: white;
+	border: 3px solid white;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	border-top: 0px;
+}
+
+.row-seat > div div.booked-seat {
+	color: #202020;
+	border-color: #202020;
+}
+
+.row-seat > div div.booked-seat:hover {
+	color: #202020;
+	border-color: #202020;
+}
+
+.row-seat:hover > span {
+	color: #FFD100;
+}
+
+.row-seat > div div:hover {
+	color: #FFD100;
+	border-color: #FFD100;
+}
+
+.row-seat {
+	width: auto;
+	margin-bottom: 20px;
+}
+
+.row-C, .row-E {
+	margin-bottom: 55px;
+}
+
+.row-seat > div {
+	margin: auto;
+	display: block;
+	width: 100%;
+	border: none;
+
+	text-align: center;
+}
+
+@media (min-width: 399px) {
+  .row-seat > span {
+		float: left;
+	}
+}
