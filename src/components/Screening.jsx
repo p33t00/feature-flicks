@@ -1,4 +1,4 @@
-import { Image, Button, Card, Row, Col } from 'react-bootstrap'
+import { Image, Button, Card, Row, Col, Badge } from 'react-bootstrap'
 import { Link } from 'react-router-dom';
 import './Screening.css'
 import Spider from '../assets/spider.jpeg'
@@ -11,7 +11,7 @@ export default function Screening() {
       </Link>
       <Card.Body className="d-flex flex-column row">
 	      	<Col>
-		        <Card.Title>Card Title</Card.Title>
+		        <Card.Title>Card Title Card Title Card Title Card Title Card Title Card Title Card Title Card Title</Card.Title>
 		        <Card.Text className="description-card">
 		          Some quick example text to build on the card title and make up the
 		          bulk of the card's content.
@@ -36,9 +36,10 @@ export default function Screening() {
 		      	<Row className="card-footer align-self-end">
 		      		<Col>
 		      			<p className="my-0"><span>Duration: 120 min.</span></p>
-				      	<code>October 12 Wednesday - 19:50</code>
+				      	<code className="me-3">October 12 Wednesday - 19:50</code>
+				      	<Badge bg="secondary">Adventure</Badge>
 		      		</Col>
-		      		<Col className="align-self-center">
+		      		<Col className="col" xs={3} className="align-self-center">
 			      		<Link to="/booking">
 					        <Button className="float-end" variant="warning">Book</Button>{' '}
 			      		</Link>
