@@ -9,6 +9,8 @@ const NODE_HILL = 'https://cinema-rest.nodehill.se'
 
 export default function Screening({screening, movie}) {
 	const { posterImage, length, categories } = movie.description
+	const screeningTimeRaw = new Date(screening.time)
+	const screeningTime = `${screeningTimeRaw.toDateString()} - ${screeningTimeRaw.toLocaleTimeString()}`
 
 	return (
     <Card className="screening">
@@ -42,9 +44,8 @@ export default function Screening({screening, movie}) {
 		      	<Row className="card-footer align-self-end">
 		      		<Col>
 		      			<p className="my-0"><span>Duration: {length} min.</span></p>
-				      	<code className="me-3">{screening.time}</code>
-				      	{/*<code className="me-3">October 12 Wednesday - 19:50</code>*/}
-				      	{categories.map(c => <Badge bg="secondary">{c}</Badge>)}
+				      	<code className="me-3">{screeningTime}</code>
+				      	{categories.map(c => <Badge bg="secondary" className="me-2" key={c}>{c}</Badge>)}
 		      		</Col>
 		      		<Col className="col" xs={3} className="align-self-center">
 			      		<Link to="/booking">
