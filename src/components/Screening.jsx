@@ -39,7 +39,7 @@ export default function Screening() {
 				      	<code className="me-3">October 12 Wednesday - 19:50</code>
 				      	<Badge bg="secondary">Adventure</Badge>
 		      		</Col>
-		      		<Col className="col" xs={3} className="align-self-center">
+		      		<Col xs={3} className="col align-self-center">
 			      		<Link to="/booking">
 					        <Button className="float-end" variant="warning">Book</Button>{' '}
 			      		</Link>
