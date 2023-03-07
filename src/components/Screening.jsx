@@ -47,7 +47,7 @@ export default function Screening({screening, movie}) {
 				      	<code className="me-3">{screeningTime}</code>
 				      	{categories.map(c => <Badge bg="secondary" className="me-2" key={c}>{c}</Badge>)}
 		      		</Col>
-		      		<Col xs={3} className="col align-self-center">
+		      		<Col className="col" xs={3} className="align-self-center">
 			      		<Link to="/booking">
 					        <Button className="float-end" variant="warning">Book</Button>{' '}
 			      		</Link>
