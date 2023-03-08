@@ -8,4 +8,12 @@ async function getMovies() {
 	return moviesMap
 }
 
-export { getScreenings, getMovies }
+function getSeats() {
+	return [null, 1,1,1,0,1,1,1,1,1,1,1,0,0,0,0,1,1,1,0,0,1,1,1,1,1,1,0,0,0,0,1,1,1,0,0,1,1,0,0,0,1,1,1,0,0,1,1,0,1,0,1,1,1,0,0,1,0,1,1,1,0]
+}
+
+function getRowDevisions() {
+	return [6, 7, 8, 10, 10, 10, 10]
+}
+
+export { getScreenings, getMovies, getSeats, getRowDevisions }

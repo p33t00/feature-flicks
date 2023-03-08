@@ -1,12 +1,12 @@
 import Container from 'react-bootstrap/Container'
 import './AuditoriumBig.css'
 import Row from './Row.jsx'
-
-// These things simulated as if come from Backend
-const seats = [null, 1,1,1,0,1,1,1,1,1,1,1,0,0,0,0,1,1,1,0,0,1,1,1,1,1,1,0,0,0,0,1,1,1,0,0,1,1,0,0,0,1,1,1,0,0,1,1,0,1,0,1,1,1,0,0,1,0,1,1,1,0]
-const rowDevision = [6, 7, 8, 10, 10, 10, 10]
+import { getSeats, getRowDevisions } from '../services/MoviesApi.js'
 
 export default function AuditoriumBig() {
+	const seats = getSeats()
+	const rowDevision = getRowDevisions()
+
 	const totalSeatsRowDevision = rowDevision.reduce((acc, current) => acc+current, 0)
 	if(totalSeatsRowDevision !== (seats.length-1)) throw new Error("Total number of seats does not match total seat in row devision")
 
