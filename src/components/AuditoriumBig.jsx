@@ -1,6 +1,8 @@
 import Container from 'react-bootstrap/Container'
 import './AuditoriumBig.css'
-import Seat from './Seat.jsx'
+import Row from './Row.jsx'
+
+const seats = [null, 1,1,1,0,1,1,1,1,1,1,1,0,0,0,0,1,1,1,0,0,1,1,1,1,1,1,0,0,0,0,1,1,1,0,0,1,1]
 
 export default function AuditoriumBig() {
 	return (
@@ -9,102 +11,7 @@ export default function AuditoriumBig() {
 				colorToggle(event)
 			}
 		}}>
-			<div className="row-seat row-A">
-				<span>A</span>
-				<div>
-					{/*<Seat num={1} />*/}
-					<div className="seat">2</div>
-					<div>3</div>
-					<div>4</div>
-					<div>5</div>
-					<div>6</div>
-				</div>
-			</div>
-			<div className="row-seat row-B">
-				<span>B</span>
-				<div>
-					<div>1</div>
-					<div>2</div>
-					<div>3</div>
-					<div>4</div>
-					<div>5</div>
-					<div>6</div>
-					<div>7</div>
-				</div>
-			</div>
-			<div className="row-seat row-C">
-				<span>C</span>
-				<div>
-					<div>1</div>
-					<div>2</div>
-					<div>3</div>
-					<div>4</div>
-					<div>5</div>
-					<div>6</div>
-					<div>7</div>
-					<div>8</div>
-				</div>
-			</div>
-			<div className="row-seat row-D">
-				<span>D</span>
-				<div>
-					<div>1</div>
-					<div>2</div>
-					<div>3</div>
-					<div>4</div>
-					<div>5</div>
-					<div className="booked-seat">6</div>
-					<div className="booked-seat">7</div>
-					<div>8</div>
-					<div>9</div>
-					<div>10</div>
-				</div>
-			</div>
-			<div className="row-seat row-E">
-				<span>E</span>
-				<div>
-					<div>1</div>
-					<div>2</div>
-					<div>3</div>
-					<div>4</div>
-					<div>5</div>
-					<div className="booked-seat">6</div>
-					<div className="booked-seat">7</div>
-					<div>8</div>
-					<div>9</div>
-					<div>10</div>
-				</div>
-			</div>
-			<div className="row-seat row-F">
-				<span>F</span>
-				<div>
-					<div>1</div>
-					<div>2</div>
-					<div>3</div>
-					<div>4</div>
-					<div>5</div>
-					<div className="booked-seat">6</div>
-					<div className="booked-seat">7</div>
-					<div>8</div>
-					<div>9</div>
-					<div>10</div>
-				</div>
-			</div>
-			<div className="row-seat row-G">
-				<span>G</span>
-				<div>
-					<div>1</div>
-					<div>2</div>
-					<div>3</div>
-					<div>4</div>
-					<div>5</div>
-					<div className="booked-seat">6</div>
-					<div className="booked-seat">7</div>
-					<div>8</div>
-					<div>9</div>
-					<div>10</div>
-				</div>
-			</div>
+			<Row rowDevision={[6, 7, 8, 0, 10, 10]} seats={seats} />
 		</Container>
 	);
 }
