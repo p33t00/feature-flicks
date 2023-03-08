@@ -1,4 +1,7 @@
 export default function Row({rowDevision, seats}) {
+	const totalSeatsRowDevision = rowDevision.reduce((acc, current) => acc+current, 0)
+	if(totalSeatsRowDevision !== (seats.length-1)) throw new Error("Total number of seats does not match total seat in row devision")
+
 	let rowSeatsIncrement = 1;
 	let alphabetCode = 65
 	let rowLetter = ''
@@ -19,7 +22,6 @@ export default function Row({rowDevision, seats}) {
 				</div>)
 			}) }
 		</>
-		// if (rowDevision === 0) print rowSeparator
 	)
 }
 
@@ -28,7 +30,8 @@ function generateSeats(startSeatIdx, qtyOfSeats, seats) {
 	const incrementedRowSeatsIncrement = startSeatIdx + qtyOfSeats;
 
 	while(startSeatIdx < incrementedRowSeatsIncrement) {
-		seatsCollect.push(<div className="seat" className={seats[startSeatIdx] === 0 ? "booked-seat" : ""}>{startSeatIdx}</div>)
+		const bookedClass = seats[startSeatIdx] === 0 ? "booked-seat" : ""
+		seatsCollect.push(<div className={`seat ${bookedClass}`} key={startSeatIdx}>{startSeatIdx}</div>)
 		startSeatIdx++
 	}
 

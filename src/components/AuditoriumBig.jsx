@@ -2,7 +2,7 @@ import Container from 'react-bootstrap/Container'
 import './AuditoriumBig.css'
 import Row from './Row.jsx'
 
-const seats = [null, 1,1,1,0,1,1,1,1,1,1,1,0,0,0,0,1,1,1,0,0,1,1,1,1,1,1,0,0,0,0,1,1,1,0,0,1,1]
+const seats = [null, 1,1,1,0,1,1,1,1,1,1,1,0,0,0,0,1,1,1,0,0,1,1,1,1,1,1,0,0,0,0,1,1,1,0,0,1,1,0,0,0,1,1,1,0,0,1,1,0,1,0,1,1,1,0,0,1,0,1,1,1,0]
 
 export default function AuditoriumBig() {
 	return (
@@ -11,7 +11,7 @@ export default function AuditoriumBig() {
 				colorToggle(event)
 			}
 		}}>
-			<Row rowDevision={[6, 7, 8, 0, 10, 10]} seats={seats} />
+			<Row rowDevision={[6, 7, 8, 10, 10, 10, 10]} seats={seats} />
 		</Container>
 	);
 }
