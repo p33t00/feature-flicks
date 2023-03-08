@@ -1,25 +1,14 @@
-export default function Row({rowLetter, seats, seatIdStart, seatsInRow}) {
-	const seatsCollect = generateSeats(seatIdStart, seatsInRow, seats)
+import Seat from './Seat.jsx'
 
+export default function Row({rowLetter, seats, seatIdStart, seatsInRow}) {
 	return (
 		<div className="row-seat">
 			<span>{rowLetter}</span>
 				<div>
-					{seatsCollect.map(s => s)}
+					{seats.slice(seatIdStart, seatIdStart+seatsInRow)
+						// First reference to seatIdStart writes into "key" and second writes into "seatId" and increments afterwards
+						.map(booked => <Seat key={seatIdStart} seatId={seatIdStart++} booked={booked} />)}
 			</div>
 		</div>
 	)
-}
-
-function generateSeats(startSeatIdx, qtyOfSeats, seats) {
-	let seatsCollect = []
-	const incrementedRowSeatsIncrement = startSeatIdx + qtyOfSeats;
-
-	while(startSeatIdx < incrementedRowSeatsIncrement) {
-		const bookedClass = seats[startSeatIdx] === 0 ? "booked-seat" : ""
-		seatsCollect.push(<div className={`seat ${bookedClass}`} key={startSeatIdx}>{startSeatIdx}</div>)
-		startSeatIdx++
-	}
-
-	return seatsCollect
 }
