@@ -3,7 +3,9 @@ import './AuditoriumBig.css'
 import Row from './Row.jsx'
 import { getSeats, getRowDevisions } from '../services/MoviesApi.js'
 
-export default function AuditoriumBig() {
+const seatsBooked = []
+
+export default function AuditoriumBig({seatsBookClb}) {
 	const seats = getSeats()
 	const rowDevision = getRowDevisions()
 
@@ -14,7 +16,9 @@ export default function AuditoriumBig() {
 	let seatIdStart = 1
 
 	return (
-		<Container className="auditorium-big" onClick={(event) => {if (event.target.className === "seat") colorToggle(event)}}>
+		<Container className="auditorium-big" onClick={(event) => {
+			if (event.target.className === "seat") seatToggle(event, seatsBookClb)
+		}}>
 			{rowDevision.map(seatsInRow => {
 				const rowLetter = getRowLetter(alphabetCode++)
 				const row = <Row rowLetter={rowLetter} seatsInRow={seatsInRow} seatIdStart={seatIdStart} seats={seats} key={rowLetter} />
@@ -25,10 +29,21 @@ export default function AuditoriumBig() {
 	);
 }
 
-function colorToggle(event) {
+function seatToggle(event, seatsBookClb) {
 	// const seatComputedStyle = window.getComputedStyle(event.target)
 	// console.log(seatComputedStyle.borderColor)
-	console.log(event.target.style.color)
+	const seatNum = event.target.innerHTML;
+	const seatIdx = seatsBooked.indexOf(seatNum)
+
+	if (seatsBooked.indexOf(seatNum) >= 0) {
+		seatsBooked.splice(seatIdx, 1)
+	} else {
+		seatsBooked.push(seatNum)
+	}
+	// console.log(seatsBookClb)
+	seatsBookClb(seatsBooked)
+
+	// color toggle
 	event.target.style.borderColor = event.target.style.borderColor === "rgb(255, 209, 0)" ? "white" : "#FFD100"
 	event.target.style.color = event.target.style.color === "rgb(255, 209, 0)" ? "white" : "#FFD100"
 }
