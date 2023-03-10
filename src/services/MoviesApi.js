@@ -11,7 +11,7 @@ async function getMovies() {
 async function getSeats(auditoriumId) {
 	const seats = await (await fetch(`/api/seats?auditoriumId=${auditoriumId}&sort=seatNumber`)).json()
 	// const seats = dummySeats()
-	// TODO: enable api version of getSeats
+	// TODO: enable api version of all methods here and remove dummy data.
 
 	// const tmp = [{id:1,rowNumber:1,"seatNumber":1,"auditoriumId":1},{"id":2,"rowNumber":,"seatNumber":2,"auditoriumId":1},{"id":3,"rowNumber":1,"seatNumber":3,"auditoriumId":1},{"id":4,"rowNumber":1,"seatNumber":4,"auditoriumId":1},{"id":5,"rowNumber":1,"seatNumber":5,"auditoriumId":1},{"id":6,"rowNumber":1,"seatNumber":6,"auditoriumId":1},{"id":7,"rowNumber":1,"seatNumber":7,"auditoriumId":1},{"id":8,"rowNumber":1,"seatNumber":8,"auditoriumId":1},{"id":9,"rowNumber":2,"seatNumber":9,"auditoriumId":1},{"id":10,"rowNumber":2,"seatNumber":10,"auditoriumId":1},{"id":11,"rowNumber":2,"seatNumber":11,"auditoriumId":1},{"id":12,"rowNumber":2,"seatNumber":12,"auditoriumId":1},{"id":13,"rowNumber":3,"seatNumber":13,"auditoriumId":1}]
 	return groupSeatsByRow(seats);

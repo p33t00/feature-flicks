@@ -1,6 +1,7 @@
 .container.auditorium-big {
 	width: 100%;
 	min-width: 360px;
+	min-height: 300px;
 }
 
 .row-seat > span {
@@ -58,6 +59,11 @@
 	border: none;
 
 	text-align: center;
+}
+
+.container .spinner-border {
+	display: block;
+	margin: auto;
 }
 
 @media (min-width: 399px) {

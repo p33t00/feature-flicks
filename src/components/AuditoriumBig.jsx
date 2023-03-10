@@ -1,31 +1,40 @@
 import { useState, useEffect } from 'react'
+import Spinner from 'react-bootstrap/Spinner'
 import Container from 'react-bootstrap/Container'
 import './AuditoriumBig.css'
 import Row from './Row.jsx'
 import { getSeats, getOccupiedSeats } from '../services/MoviesApi.js'
 
 const seatsBooked = []
+let occupiedSeats = []
 
 export default function AuditoriumBig({auditoriumId, screeningId, seatsBookClb}) {
 	const [seats, setSeats] = useState([])
-	const [occupiedSeats, setOccupiedSeats] = useState([])
+	const [screeningSeats, setScreeningSeats] = useState([])
 	
 	useEffect(() => {
 		(async () => setSeats(await getSeats(auditoriumId)))();
-		(async () => setOccupiedSeats(await getOccupiedSeats(screeningId)))();
+
+		getOccupiedSeats(screeningId)
+		.then(data => {
+				setScreeningSeats(data)
+				occupiedSeats = data[0].occupiedSeats.split(',').map(s => Number(s))
+		});
 	}, [])
 
 	return (
 		<Container className="auditorium-big" onClick={(event) => {
 			if (event.target.className === "seat") seatToggle(event, seatsBookClb)
 		}}>
-			{seats.map(seatsInRow => {
-				if (seatsInRow.length > 0) {
-					// TODO: shorted this {...occupiedSeats}
-					const row = <Row seatsInRow={seatsInRow} occupiedSeats={occupiedSeats} key={seatsInRow[0].rowNumber} />
-					return row
-				}
-			})}
+			{
+				(seats.length === 0 || screeningSeats.length === 0) ?
+					<Spinner animation="border" variant="warning" /> :
+					seats.map(seatsInRow => {
+						if (seatsInRow.length > 0) {
+						return <Row seatsInRow={seatsInRow} occupiedSeats={occupiedSeats} key={seatsInRow[0].rowNumber} />
+					}
+				})
+			}
 		</Container>
 	)
 }
