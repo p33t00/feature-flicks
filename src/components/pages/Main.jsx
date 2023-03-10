@@ -4,32 +4,33 @@ import Screening from '../Screening.jsx'
 // import { getScreenings, getMovies } from '../../services/MoviesApi.js'
 
 
+// TODO: enable Screenings and movies from api
+
 export default function Main() {
+  let scrns = null;
 	const [screenings, setScreenings] = useState([])
-	const [movies, setMovies] = useState([]);
+	const [movies, setMovies] = useState({});
 
 	// called only once, on the start if 2nd arg is []
-	useEffect(() => { 
-		// (async () => setScreenings(await getScreenings()))()
-		// (async () => setMovies(await getMovies()))()
+	useEffect(() => {
+    // (async () => setScreenings(await getScreenings()))();
+		// (async () => setMovies(await getMovies()))();
 		setScreenings(getScreenings())
 		setMovies(getMovies())
 	}, [])
 
 	return (
-		<>
-			{
-				screenings.length > 0 ? (
-					<Stack gap={4}>
-			      {screenings.map(s => <Screening key={s.id} screening={s} movie={movies[s.movieId]} />)}
-			    </Stack>
-				) : (<p>No screenings</p>)
-			}
-		</>
-	)
+    <>
+      {
+        screenings.length > 0 ? (
+          <Stack gap={4}>
+            {screenings.map(s => <Screening key={s.id} screening={s} movie={movies[s.movieId]} />)}
+          </Stack>
+        ) : (<p>No screenings</p>)
+      }
+    </>
+  ) 
 }
-
-
 
 function getScreenings() {
   return [

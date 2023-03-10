@@ -1,4 +1,4 @@
-async function getScreenings() { await (await fetch('/api/screenings')).json() }
+async function getScreenings() { return await (await fetch('/api/screenings')).json() }
 
 // key matches movieId
 async function getMovies() {
