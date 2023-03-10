@@ -8,11 +8,11 @@ const NODE_HILL = 'https://cinema-rest.nodehill.se'
 
 
 export default function Screening({screening, movie}) {
-	const { time, auditoriumId } = screening
+	const { id, time, auditoriumId } = screening
 	const { posterImage, length, categories } = movie.description
 	const screeningTimeRaw = new Date(time)
 	const screeningTime = `${screeningTimeRaw.toDateString()} - ${screeningTimeRaw.toLocaleTimeString()}`
-	const bookLink = `booking?audId=${auditoriumId}`
+	const bookLink = `booking?audId=${auditoriumId}&scr=${id}`
 
 	return (
     <Card className="screening">

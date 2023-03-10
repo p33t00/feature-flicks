@@ -12,6 +12,7 @@ export default function Booking() {
 	const navigate = useNavigate()
 	const [searchParams] = useSearchParams()
 	const auditoriumId = searchParams.get('audId')
+	const screeningId = searchParams.get('scr')
 
 	const [modalShow, setModalShow] = useState(false)
 	const [seatsSelected, setSeatsSelected] = useState([])
@@ -25,7 +26,7 @@ export default function Booking() {
 			<h1 className="screen-side">Screen Side</h1>
 			{validateAuditoriumId(auditoriumId) ?
 				// TODO : get screeningID from main page
-				<AuditoriumBig auditoriumId={auditoriumId} screeningId={1} seatsBookClb={seats => setSeatsSelected(seats)}/> :
+				<AuditoriumBig auditoriumId={auditoriumId} screeningId={screeningId} seatsBookClb={seats => setSeatsSelected(seats)}/> :
 				<h2>An error occured. Please try again later or contact customer support.</h2>
 			}
 			<hr/>
