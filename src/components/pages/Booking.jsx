@@ -14,7 +14,7 @@ export default function Booking() {
 	const auditoriumId = searchParams.get('audId')
 
 	const [modalShow, setModalShow] = useState(false)
-	const [seatsBooked, setSeatsBooked] = useState([])
+	const [seatsSelected, setSeatsSelected] = useState([])
 	const [children, setChildren] = useState(0)
 	const [seniors, setSeniors] = useState(0)
 
@@ -24,7 +24,8 @@ export default function Booking() {
 		<div className="booking">
 			<h1 className="screen-side">Screen Side</h1>
 			{validateAuditoriumId(auditoriumId) ?
-				<AuditoriumBig seatsBookClb={seats => setSeatsBooked(seats)}/> :
+				// TODO : get screeningID from main page
+				<AuditoriumBig auditoriumId={auditoriumId} screeningId={1} seatsBookClb={seats => setSeatsSelected(seats)}/> :
 				<h2>An error occured. Please try again later or contact customer support.</h2>
 			}
 			<hr/>
@@ -34,7 +35,7 @@ export default function Booking() {
 			<RangeChildren setChildrenClb={c => setChildren(c)}/>
 			<Button className="btn-book" onClick={() => setModalShow(true)}>Book Tickets</Button>
 			<Button variant="secondary" onClick={() => navigate('/')}>Cancel</Button>
-			<Receipt children={children} seniors={seniors} seats={seatsBooked} show={modalShow} onHide={() => setModalShow(false)} />
+			<Receipt children={children} seniors={seniors} seats={seatsSelected} show={modalShow} onHide={() => setModalShow(false)} />
 		</div>
 	)
 }

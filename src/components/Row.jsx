@@ -1,13 +1,11 @@
 import Seat from './Seat.jsx'
 
-export default function Row({rowLetter, seats, seatIdStart, seatsInRow}) {
+export default function Row({seatsInRow, occupiedSeats}) {
 	return (
 		<div className="row-seat">
-			<span>{rowLetter}</span>
-				<div>
-					{seats.slice(seatIdStart, seatIdStart+seatsInRow)
-						// First reference to seatIdStart writes into "key" and second writes into "seatId" and increments afterwards
-						.map(booked => <Seat key={seatIdStart} seatId={seatIdStart++} booked={booked} />)}
+			<span>{seatsInRow[0].rowNumber}</span>
+			<div>
+				{seatsInRow.map(s => <Seat key={s.seatNumber} seatId={s.seatNumber} booked={false} />)}
 			</div>
 		</div>
 	)
