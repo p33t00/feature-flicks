@@ -1,4 +1,5 @@
 import { Button, Modal, ListGroup } from 'react-bootstrap';
+import './Receipt.css'
 
 export default function BookingConfirm({tickets, screening, seats, children, seniors, onHide, show}) {
   tickets = ticketNameToKey(tickets)
@@ -14,12 +15,13 @@ export default function BookingConfirm({tickets, screening, seats, children, sen
 
   return (
     <Modal
+      id="receipt"
       show={show}
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
-      <Modal.Header closeButton>
+      <Modal.Header>
         <Modal.Title id="contained-modal-title-vcenter">
           Your booking #: {bookingNum}
         </Modal.Title>
@@ -40,7 +42,7 @@ export default function BookingConfirm({tickets, screening, seats, children, sen
         </ListGroup>
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={onHide}>Close</Button>
+        <Button bsPrefix="btn-ff" onClick={onHide}>Close</Button>
       </Modal.Footer>
     </Modal>
   );

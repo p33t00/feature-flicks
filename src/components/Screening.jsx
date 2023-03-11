@@ -13,7 +13,7 @@ export default function Screening({screening, movie}) {
 	const screeningTime = `${screeningTimeRaw.toDateString()} - ${screeningTimeRaw.toLocaleTimeString()}`
 
 	return (
-    <Card className="screening">
+  <Card className="screening">
       <Link to="/booking" state={{screening: screening}}>
       	<Card.Img src={NODE_HILL + posterImage} />
       </Link>
@@ -49,7 +49,7 @@ export default function Screening({screening, movie}) {
 		      		</Col>
 		      		<Col className="col" xs={3} className="align-self-center">
 			      		<Link to="/booking" state={{screening: screening}}>
-					        <Button className="float-end" variant="warning">Book</Button>{' '}
+					        <Button bsPrefix="btn-ff" className="float-end" variant="warning">Book</Button>{' '}
 			      		</Link>
 		      		</Col>
 		      	</Row>

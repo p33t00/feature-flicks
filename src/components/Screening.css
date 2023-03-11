@@ -39,7 +39,7 @@
 
 }
 
-.screening .card-footer button {
+/*.screening .card-footer button {
 	margin-top: 10px;
 	width: 100%;
   border-radius: 0px;
@@ -50,14 +50,14 @@
   background-color: #FFD100;
   cursor: pointer;
   transition: border-color 0.25s;
-}
-.screening .card-footer button:hover {
+}*/
+/*.screening .card-footer button:hover {
   background-color: #ffd80f;
 }
 .screening .card-footer button:focus,
 .screening .card-footer button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
-}
+}*/
 
 @media (min-width: 992px) {
   .screening.card {

@@ -1,3 +1,7 @@
+.booking {
+	padding-bottom: 15px;
+}
+
 .booking h3 {
 	margin: 40px 0;
 	color: #FFD100;
@@ -13,30 +17,13 @@
 }
 
 .booking button {
-	color: #333533;
-	margin-top: 40px;
-  border-radius: 0px;
-  border: 0;
-  /*font-size: 1em;*/
-  /*font-weight: 500;*/
-  /*font-family: inherit;*/
-  cursor: pointer;
-  /*transition: border-color 0.25s;*/
-}
-.booking button:hover {
-	color: black;
-}
-
-button.btn-book {
 	margin-right: 20px;
-  background-color: #FFD100;
-}
-.booking button.btn-book:hover {
-	color: black;
-  background-color: #ffd80f;
 }
 
 .container .spinner-border {
 	display: block;
 	margin: auto;
 }
+
+
+/* #6c757d */

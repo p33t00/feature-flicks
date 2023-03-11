@@ -1,0 +1,23 @@
+#receipt .modal-content {
+	background-color: #202020;
+	border-color: #FFD100;
+	color: white;
+}
+
+#receipt .modal-footer {
+	background-color: #202020;
+	border-color: #D6D6D6;
+}
+
+#receipt .modal-title {
+	color: #FFD100;
+}
+
+#receipt .modal-body .list-group-item {
+	color: #333533;
+	background-color: #D6D6D6;
+}
+
+#receipt .modal-body .list-group-item span, code{
+	color: black;
+}

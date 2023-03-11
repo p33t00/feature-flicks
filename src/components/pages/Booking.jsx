@@ -37,13 +37,12 @@ export default function Booking() {
 					<Spinner animation="border" variant="warning" /> :
 					<AuditoriumBig seats={seats} occupiedScreeningSeats={occupiedScreenSeats} seatsBookClb={seats => setSeatsSelected(seats)}/>
 			}
-			<hr/>
 			<h3>Here you can select your seats and manage discounts.</h3>
 			<RangeSenior setSeniorsClb={s => setSeniors(s)}/>
 			<hr/>
 			<RangeChildren setChildrenClb={c => setChildren(c)}/>
-			<Button className="btn-book" onClick={() => setModalShow(true)}>Book Tickets</Button>
-			<Button variant="secondary" onClick={() => navigate('/')}>Cancel</Button>
+			<Button bsPrefix="btn-ff" onClick={() => setModalShow(true)}>Book Tickets</Button>
+			<Button bsPrefix="btn-ff" variant="secondary" onClick={() => navigate('/')}>Cancel</Button>
 			{
 				tickets.length > 0 ? <Receipt tickets={tickets} screening={occupiedScreenSeats} children={children} seniors={seniors} seats={seatsSelected} show={modalShow} onHide={() => setModalShow(false)} /> : ""
 			}
