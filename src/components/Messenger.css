@@ -1,6 +1,9 @@
 .messenger {
-	float: right;
-	position: absolute;
-	top: 130px;
-	right: 0;
+	margin-bottom: 5px;
+	min-height: 50px;
+}
+
+.messenger .toast {
+	width: auto;
+	margin: auto;
 }
