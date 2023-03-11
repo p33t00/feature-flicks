@@ -41,7 +41,7 @@ export default function Booking() {
 			<RangeChildren setChildrenClb={c => setChildren(c)}/>
 			<Button className="btn-book" onClick={() => setModalShow(true)}>Book Tickets</Button>
 			<Button variant="secondary" onClick={() => navigate('/')}>Cancel</Button>
-			<Receipt children={children} seniors={seniors} seats={seatsSelected} show={modalShow} onHide={() => setModalShow(false)} />
+			<Receipt screening={occupiedScreenSeats} children={children} seniors={seniors} seats={seatsSelected} show={modalShow} onHide={() => setModalShow(false)} />
 		</div>
 	)
 }

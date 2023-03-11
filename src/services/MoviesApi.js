@@ -24,7 +24,7 @@ async function getOccupiedSeats(screeningId) {
 	} catch(e) {
 		console.erro('Error while fetching occupied seats:', e)
 	}
-	return seats;
+	return seats[0];
 }
 
 function groupSeatsByRow(seats) {

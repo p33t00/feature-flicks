@@ -5,7 +5,7 @@ import Row from './Row.jsx'
 const seatsBooked = []
 
 export default function AuditoriumBig({seats, occupiedScreeningSeats, seatsBookClb}) {
-	const occupiedSeats = occupiedScreeningSeats[0].occupiedSeats.split(',').map(s => Number(s))
+	const occupiedSeats = occupiedScreeningSeats.occupiedSeats.split(',').map(s => Number(s))
 
 	return (
 		<Container className="auditorium-big" onClick={(event) => {
