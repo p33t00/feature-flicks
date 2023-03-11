@@ -1,7 +1,10 @@
 import { Button, Modal, ListGroup } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import './Receipt.css'
 
 export default function BookingConfirm({tickets, screening, seats, children, seniors, onHide, show}) {
+  const navigate = useNavigate()
+
   tickets = ticketNameToKey(tickets)
 
   const {movie, auditorium, screeningTime} = screening
@@ -42,7 +45,8 @@ export default function BookingConfirm({tickets, screening, seats, children, sen
         </ListGroup>
       </Modal.Body>
       <Modal.Footer>
-        <Button bsPrefix="btn-ff" onClick={onHide}>Close</Button>
+        <Button bsPrefix="btn-ff" onClick={() => navigate('/')}>Submit</Button>
+        <Button bsPrefix="btn-ff" variant="secondary" onClick={onHide}>Cancel</Button>
       </Modal.Footer>
     </Modal>
   );

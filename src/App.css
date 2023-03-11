@@ -42,10 +42,3 @@ button.btn-ff-secondary {
 button.btn-ff-secondary:hover {
   background-color: #5c636a;
 }
-
-/*@media (min-width: 460px) {
-  .screening button {
-    margin: 0;
-    width: auto;
-  }
-}*/
