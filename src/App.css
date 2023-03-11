@@ -9,7 +9,7 @@ nav.navbar {
   margin-bottom: 20px;
 }
 
-nav.navbar-brand {
+nav span.navbar-brand {
   color: #FFEE32;
 }
 
