@@ -4,30 +4,35 @@ import RangeSenior from '../RangeSenior.jsx'
 import RangeChildren from '../RangeChildren.jsx'
 import Receipt from '../Receipt.jsx'
 import Button from 'react-bootstrap/Button'
+import Spinner from 'react-bootstrap/Spinner'
+import { useEffect, useState } from 'react'
+import { useNavigate, useLocation } from 'react-router-dom';
 
-import { useState } from 'react'
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { getSeats, getOccupiedSeats } from '../../services/MoviesApi.js'
 
 export default function Booking() {
 	const navigate = useNavigate()
-	const [searchParams] = useSearchParams()
-	const auditoriumId = searchParams.get('audId')
-	const screeningId = searchParams.get('scr')
+	const { auditoriumId, id: screeningId } = useLocation().state.screening;
 
 	const [modalShow, setModalShow] = useState(false)
 	const [seatsSelected, setSeatsSelected] = useState([])
+	const [seats, setSeats] = useState([])
+	const [occupiedScreenSeats, setOccupiedScreenSeats] = useState([])
 	const [children, setChildren] = useState(0)
 	const [seniors, setSeniors] = useState(0)
 
-	if (!validateAuditoriumId(auditoriumId) ) {console.error(`Invalid auditorium id provided: "${auditoriumId}"`)}
+	useEffect(() => {
+		(async () => setSeats(await getSeats(auditoriumId)))();
+		(async () => setOccupiedScreenSeats(await getOccupiedSeats(screeningId)))();
+	}, [])
 
 	return (
 		<div className="booking">
 			<h1 className="screen-side">Screen Side</h1>
-			{validateAuditoriumId(auditoriumId) ?
-				// TODO : get screeningID from main page
-				<AuditoriumBig auditoriumId={auditoriumId} screeningId={screeningId} seatsBookClb={seats => setSeatsSelected(seats)}/> :
-				<h2>An error occured. Please try again later or contact customer support.</h2>
+			{
+				(seats.length === 0 || occupiedScreenSeats.length === 0) ?
+					<Spinner animation="border" variant="warning" /> :
+					<AuditoriumBig seats={seats} occupiedScreeningSeats={occupiedScreenSeats} seatsBookClb={seats => setSeatsSelected(seats)}/>
 			}
 			<hr/>
 			<h3>Here you can select your seats and manage discounts.</h3>
@@ -40,5 +45,3 @@ export default function Booking() {
 		</div>
 	)
 }
-
-function validateAuditoriumId(id) {return (id && id > 0 && id < 3)}

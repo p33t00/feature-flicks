@@ -8,15 +8,13 @@ const NODE_HILL = 'https://cinema-rest.nodehill.se'
 
 
 export default function Screening({screening, movie}) {
-	const { id, time, auditoriumId } = screening
 	const { posterImage, length, categories } = movie.description
-	const screeningTimeRaw = new Date(time)
+	const screeningTimeRaw = new Date(screening.time)
 	const screeningTime = `${screeningTimeRaw.toDateString()} - ${screeningTimeRaw.toLocaleTimeString()}`
-	const bookLink = `booking?audId=${auditoriumId}&scr=${id}`
 
 	return (
     <Card className="screening">
-      <Link to={bookLink}>
+      <Link to="/booking" state={{screening: screening}}>
       	<Card.Img src={NODE_HILL + posterImage} />
       </Link>
       <Card.Body className="d-flex flex-column row">
@@ -50,7 +48,7 @@ export default function Screening({screening, movie}) {
 				      	{categories.map(c => <Badge bg="secondary" className="me-2" key={c}>{c}</Badge>)}
 		      		</Col>
 		      		<Col className="col" xs={3} className="align-self-center">
-			      		<Link to={bookLink}>
+			      		<Link to="/booking" state={{screening: screening}}>
 					        <Button className="float-end" variant="warning">Book</Button>{' '}
 			      		</Link>
 		      		</Col>
