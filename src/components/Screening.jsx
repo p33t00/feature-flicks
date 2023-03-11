@@ -1,5 +1,6 @@
 import { Image, Button, Card, Row, Col, Badge } from 'react-bootstrap'
 import { Link } from 'react-router-dom';
+import { formatDateTime } from '../lib/date-time-helper.js' 
 import './Screening.css'
 // import NODE_HILL from process.env.PUBLIC_URL + '/constants.js'
 // import Spider from '../assets/spider.jpeg'
@@ -9,9 +10,7 @@ const NODE_HILL = 'https://cinema-rest.nodehill.se'
 
 export default function Screening({screening, movie}) {
 	const { posterImage, length, categories } = movie.description
-	const screeningTimeRaw = new Date(screening.time)
-	const screeningTime = `${screeningTimeRaw.toDateString()} - ${screeningTimeRaw.toLocaleTimeString()}`
-
+	
 	return (
   <Card className="screening">
       <Link to="/booking" state={{screening: screening}}>
@@ -44,7 +43,7 @@ export default function Screening({screening, movie}) {
 		      	<Row className="card-footer align-self-end">
 		      		<Col>
 		      			<p className="my-0"><span>Duration: {length} min.</span></p>
-				      	<code className="me-3">{screeningTime}</code>
+				      	<code className="me-3">{formatDateTime(screening.time)}</code>
 				      	{categories.map(c => <Badge bg="secondary" className="me-2" key={c}>{c}</Badge>)}
 		      		</Col>
 		      		<Col className="col" xs={3} className="align-self-center">

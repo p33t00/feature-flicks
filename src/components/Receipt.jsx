@@ -1,5 +1,6 @@
 import { Button, Modal, ListGroup } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import { formatDateTime } from '../lib/date-time-helper.js' 
 import './Receipt.css'
 
 export default function BookingConfirm({tickets, screening, seats, children, seniors, onHide, show}) {
@@ -35,7 +36,7 @@ export default function BookingConfirm({tickets, screening, seats, children, sen
         </p>
         <ListGroup>
           <ListGroup.Item>Movie: <code>{movie}</code></ListGroup.Item>
-          <ListGroup.Item>Data & Time: <code>{screeningTime}</code></ListGroup.Item>
+          <ListGroup.Item>Data & Time: <code>{formatDateTime(screeningTime)}</code></ListGroup.Item>
           <ListGroup.Item>Auditorium: <code>{auditorium}</code></ListGroup.Item>
           <ListGroup.Item>Seats: <code>{seats.join(',')}</code></ListGroup.Item>
           {adults > 0 ? <ListGroup.Item>Adults: <span>{adults} x {tickets.adult.price} = {totalPriceAdults} SEK</span></ListGroup.Item> : ""}
