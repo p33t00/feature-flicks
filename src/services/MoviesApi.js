@@ -27,6 +27,16 @@ async function getOccupiedSeats(screeningId) {
 	return seats[0];
 }
 
+async function getTicketTypes(screeningId) {
+	let tickets = null
+	try {
+		tickets = await (await fetch('/api/ticketTypes')).json()
+	} catch(e) {
+		console.erro('Error while fetching ticket types:', e)
+	}
+	return tickets;
+}
+
 function groupSeatsByRow(seats) {
 	const seatsGrouped = []
 	seats.forEach(s => {
@@ -36,7 +46,7 @@ function groupSeatsByRow(seats) {
 	return seatsGrouped;
 }
 
-export { getScreenings, getMovies, getSeats, getOccupiedSeats }
+export { getScreenings, getMovies, getSeats, getOccupiedSeats, getTicketTypes }
 
 
 function dummySeats() {

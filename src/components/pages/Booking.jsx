@@ -8,7 +8,7 @@ import Spinner from 'react-bootstrap/Spinner'
 import { useEffect, useState } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom';
 
-import { getSeats, getOccupiedSeats } from '../../services/MoviesApi.js'
+import { getSeats, getOccupiedSeats, getTicketTypes } from '../../services/MoviesApi.js'
 
 export default function Booking() {
 	const navigate = useNavigate()
@@ -18,12 +18,15 @@ export default function Booking() {
 	const [seatsSelected, setSeatsSelected] = useState([])
 	const [seats, setSeats] = useState([])
 	const [occupiedScreenSeats, setOccupiedScreenSeats] = useState([])
+
 	const [children, setChildren] = useState(0)
 	const [seniors, setSeniors] = useState(0)
+	const [tickets, setTickets] = useState([])
 
 	useEffect(() => {
 		(async () => setSeats(await getSeats(auditoriumId)))();
 		(async () => setOccupiedScreenSeats(await getOccupiedSeats(screeningId)))();
+		(async () => setTickets(await getTicketTypes()))();
 	}, [])
 
 	return (
@@ -41,7 +44,9 @@ export default function Booking() {
 			<RangeChildren setChildrenClb={c => setChildren(c)}/>
 			<Button className="btn-book" onClick={() => setModalShow(true)}>Book Tickets</Button>
 			<Button variant="secondary" onClick={() => navigate('/')}>Cancel</Button>
-			<Receipt screening={occupiedScreenSeats} children={children} seniors={seniors} seats={seatsSelected} show={modalShow} onHide={() => setModalShow(false)} />
+			{
+				tickets.length > 0 ? <Receipt tickets={tickets} screening={occupiedScreenSeats} children={children} seniors={seniors} seats={seatsSelected} show={modalShow} onHide={() => setModalShow(false)} /> : ""
+			}
 		</div>
 	)
 }
