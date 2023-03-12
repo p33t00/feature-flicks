@@ -3,6 +3,14 @@
   min-height: 100vh;
 }
 
+.App.container {
+  min-height: 100vh;
+}
+
+.App .vstack {
+  min-height: 100vh;
+}
+
 nav.navbar {
   background-color: #202020;
   color: white;
