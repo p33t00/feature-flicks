@@ -6,23 +6,32 @@ import Screening from '../Screening.jsx'
 
 // TODO: enable Screenings and movies from api
 
-export default function Main() {
-  let scrns = null;
+export default function Main({catId}) {
+  // let scrns = null;
+  const [categoryId, setCategoryId] = useState(catId)
 	const [screenings, setScreenings] = useState([])
 	const [movies, setMovies] = useState({});
 
 	// called only once, on the start if 2nd arg is []
 	useEffect(() => {
-    // (async () => setScreenings(await getScreenings()))();
-		// (async () => setMovies(await getMovies()))();
-		setScreenings(getScreenings())
-		setMovies(getMovies())
-	}, [])
+    setCategoryId(catId)
+		if (screenings.length) {
+      setScreenings(filterByCategory(categoryId, screenings))
+    } else {
+      // (async () => setScreenings(filterByCategory(categoryId, await getScreenings())))();
+      setScreenings(filterByCategory(categoryId, getScreenings()))
+    }
+
+    // DONT NEED TO RE-FETCH MOVIES
+		if (!movies.length) setMovies(getMovies());
+// TODO: ENABLE USAGE OF API BELOW
+		// if (!Object.keys(movies).length) {(async () => setMovies(await getMovies()))()};
+	}, [catId])
 
 	return (
     <>
       {
-        screenings.length > 0 ? (
+        (screenings.length && Object.keys(movies).length) ? (
           <Stack gap={4}>
             {screenings.map(s => <Screening key={s.id} screening={s} movie={movies[s.movieId]} />)}
           </Stack>
@@ -30,6 +39,11 @@ export default function Main() {
       }
     </>
   ) 
+}
+
+function filterByCategory(categoryId, screenings) {
+  console.log("changing cat")
+  return screenings;
 }
 
 function getScreenings() {
