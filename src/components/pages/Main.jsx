@@ -29,15 +29,13 @@ export default function Main({catId}) {
 	}, [catId])
 
 	return (
-    <>
+    <Stack gap={4}>
       {
-        (screenings.length && Object.keys(movies).length) ? (
-          <Stack gap={4}>
-            {screenings.map(s => <Screening key={s.id} screening={s} movie={movies[s.movieId]} />)}
-          </Stack>
-        ) : (<p>No screenings</p>)
+        (screenings.length && Object.keys(movies).length) ?
+        screenings.map(s => <Screening key={s.id} screening={s} movie={movies[s.movieId]} />) :
+        <p>No screenings</p>
       }
-    </>
+    </Stack>
   ) 
 }
 
