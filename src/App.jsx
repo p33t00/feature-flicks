@@ -1,22 +1,20 @@
 import { Routes, Route } from 'react-router-dom'
-// import { useState } from 'react'
 import { Navbar, Container, Stack } from 'react-bootstrap'
 import './App.css'
 import Main from './components/pages/Main.jsx'
 import Booking from './components/pages/Booking.jsx'
+import CategorySelect from './components/CategorySelect.jsx'
+import TimeSortSelect from './components/TimeSortSelect.jsx'
 
-function App() {
-  // const [count, setCount] = useState(0)
-
+export default function App() {
   return (
     <div className="App">
       <Navbar expand="sm" variant="dark">
         <Container>
           <Navbar.Brand>Feature Flicks</Navbar.Brand>
           <Stack direction="horizontal" gap={4}>
-            <div className="bg-light border">Filter 1</div>
-            <div className="bg-light border">Filter 2</div>
-            <div className="bg-light border">Filter 3</div>
+            <CategorySelect />
+            <TimeSortSelect />
           </Stack>
         </Container>
       </Navbar>
@@ -29,5 +27,3 @@ function App() {
     </div>
   )
 }
-
-export default App

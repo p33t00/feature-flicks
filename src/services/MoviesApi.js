@@ -1,4 +1,10 @@
-async function getScreenings() { return await (await fetch('/api/screenings')).json() }
+async function getScreenings() {
+  try {
+    return await (await fetch('/api/screenings?sort=time')).json()
+  } catch(e) {
+    console.erro('Error while fetching screenings:', e)
+  }
+}
 
 // key matches movieId
 async function getMovies() {
@@ -37,6 +43,14 @@ async function getTicketTypes(screeningId) {
 	return tickets;
 }
 
+async function getCategories() {
+  try {
+    return await (await fetch('/api/categories?sort=title')).json()
+  } catch(e) {
+    console.erro('Error while fetching categories:', e)
+  }
+}
+
 function groupSeatsByRow(seats) {
 	const seatsGrouped = []
 	seats.forEach(s => {
@@ -46,7 +60,7 @@ function groupSeatsByRow(seats) {
 	return seatsGrouped;
 }
 
-export { getScreenings, getMovies, getSeats, getOccupiedSeats, getTicketTypes }
+export { getScreenings, getMovies, getSeats, getOccupiedSeats, getTicketTypes, getCategories }
 
 
 function dummySeats() {
