@@ -2,7 +2,7 @@ import Form from 'react-bootstrap/Form';
 import './RangeChildren.css'
 import { useState } from 'react'
 
-function RangeSenior({setChildrenClb}) {
+export default function RangeSenior({setChildrenClb}) {
   const [children, setChildren] = useState(0)
 
   return (
@@ -16,5 +16,3 @@ function RangeSenior({setChildrenClb}) {
     </>
   );
 }
-
-export default RangeSenior;

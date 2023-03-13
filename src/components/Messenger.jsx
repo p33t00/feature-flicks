@@ -6,9 +6,7 @@ import Toast from 'react-bootstrap/Toast';
 
 import './Messenger.css'
 
-function Messenger({showMsg, setShowMsg, message}) {
-  // const [show, setShow] = useState(false);
-
+export default function Messenger({showMsg, setShowMsg, message}) {
   return (
     <Row className="messenger">
         <Toast onClose={() => setShowMsg(false)} show={showMsg} delay={4000} autohide>
@@ -17,5 +15,3 @@ function Messenger({showMsg, setShowMsg, message}) {
     </Row>
   );
 }
-
-export default Messenger;

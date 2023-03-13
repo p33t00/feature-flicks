@@ -16,7 +16,6 @@ async function getMovies() {
 
 async function getSeats(auditoriumId) {
 	const seats = await (await fetch(`/api/seats?auditoriumId=${auditoriumId}&sort=seatNumber`)).json()
-	// return groupSeatsByRow(seats);
   return groupByProp(seats, 'rowNumber');
 }
 
