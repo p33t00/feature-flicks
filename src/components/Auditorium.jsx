@@ -4,11 +4,11 @@ import Row from './Row.jsx'
 
 const seatsBooked = []
 
-export default function AuditoriumBig({seats, occupiedScreeningSeats, seatsBookClb}) {
+export default function Auditorium({seats, occupiedScreeningSeats, seatsBookClb}) {
 	const occupiedSeats = occupiedScreeningSeats.occupiedSeats.split(',').map(s => Number(s))
 
 	return (
-		<Container className="auditorium-big" onClick={(event) => {
+		<Container className="auditorium" onClick={(event) => {
 			if (event.target.className === "seat") seatToggle(event, seatsBookClb)
 		}}>
 			{
