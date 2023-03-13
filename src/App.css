@@ -3,24 +3,32 @@
   min-height: 100vh;
 }
 
-.App.container {
+.App > .container {
   min-height: 100vh;
+  padding-top: 80px;
 }
 
 .App .vstack {
   min-height: 100vh;
 }
 
-nav.navbar {
+.App > nav.navbar {
   background-color: #202020;
   color: white;
   margin-bottom: 20px;
 }
 
-nav span.navbar-brand {
+.App a {
+  color: #f9dd02;
+}
+
+.App a:hover {
   color: #FFEE32;
 }
 
+.App .navbar-brand a {
+  text-decoration: none;
+}
 
 button.btn-ff {
   margin-top: 10px;
