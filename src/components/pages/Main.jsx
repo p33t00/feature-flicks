@@ -7,38 +7,38 @@ import { getScreenings, getMovies, getMoviesToCat } from '../../services/MoviesA
 
 // TODO: enable Screenings and movies from api
 
-export default function Main({catId}) {
+export default function Main({catId, sortOrder}) {
   const [categoryId, setCategoryId] = useState(catId)
+  const [sortOrd, setSortOrd] = useState(sortOrder)
 	const [shownScreenings, setShownScreenings] = useState([])
   const [screenings, setScreenings] = useState([])
 	const [movies, setMovies] = useState({});
   const [moviesXcat, setMoviesXcat] = useState([])
 
-  if (catId !== categoryId) setCategoryId(catId);
-
 	useEffect(() => {
     if (!moviesXcat.length) (async () => setMoviesXcat(await getMoviesToCat()))();
 
 		if (!screenings.length) {
-      // const screens = getScreenings()
       getScreenings().then(data => {
         setScreenings(data)
-        setShownScreenings(filterByCategory(data, moviesXcat[catId]))
+        setShownScreenings(data)
       }, e => console.error(e))
-      // setScreenings(screens)
-      // setShownScreenings(filterByCategory(screens, moviesXcat[catId]))
-    } else {
-      setShownScreenings(filterByCategory(screenings, moviesXcat[catId]))
-    }
+    } 
 
-
-    // DONT NEED TO RE-FETCH MOVIES
-		// if (!movies.length) setMovies(getMovies());
-// TODO: ENABLE USAGE OF API BELOW
 		if (!Object.keys(movies).length) {(async () => setMovies(await getMovies()))()};
-	}, [categoryId])
+	}, [])
 
-  console.log(shownScreenings.length, Object.keys(movies).length)
+
+  if (catId !== categoryId) {
+    setCategoryId(catId);
+    if (catId === 0) setShownScreenings(screenings);
+    else setShownScreenings(sortByTime(filterByCategory(screenings, moviesXcat[catId]), sortOrd));
+  }
+
+  if (sortOrd !== sortOrder) {
+    setSortOrd(sortOrder)
+    setShownScreenings(sortByTime(shownScreenings, sortOrder))
+  }
 
 	return (
     <Stack gap={4}>
@@ -51,10 +51,16 @@ export default function Main({catId}) {
   ) 
 }
 
+function sortByTime(screenings, order) {
+  return screenings.sort((a,b) => {
+    const aTime = new Date(a.time).getTime()
+    const bTime = new Date(b.time).getTime()
+    return order == 0 ? aTime - bTime : bTime - aTime;
+  })
+}
+
 function filterByCategory(screenings, movXcat) {
   if (movXcat === undefined) return screenings;
-  console.log("changing cat")
-  console.log(movXcat)
   return screenings.filter(s => {return movXcat.indexOf(s.movieId) > -1})
 }
 

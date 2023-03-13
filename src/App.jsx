@@ -9,6 +9,7 @@ import TimeSortSelect from './components/TimeSortSelect.jsx'
 
 export default function App() {
   const [catId, setCatId] = useState(0)
+  const [sortOrd, setSortOrd] = useState(0)
 
   return (
     <div className="App">
@@ -17,13 +18,13 @@ export default function App() {
           <Navbar.Brand>Feature Flicks</Navbar.Brand>
           <Stack direction="horizontal" gap={4}>
             <CategorySelect selectClb={cat => setCatId(cat)} />
-            <TimeSortSelect />
+            <TimeSortSelect sortChangeClb={order => setSortOrd(order)} />
           </Stack>
         </Container>
       </Navbar>
       <Container>
         <Routes>
-          <Route path='/' element={<Main catId={catId}/>} exact/>
+          <Route path='/' element={<Main catId={catId} sortOrder={sortOrd}/>} exact/>
           <Route path='/booking' element={<Booking />} />
         </Routes>
       </Container>        
