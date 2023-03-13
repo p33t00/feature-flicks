@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Routes, Route, Link } from 'react-router-dom'
+import { Routes, Route, Link, useLocation } from 'react-router-dom'
 import { Navbar, Container, Stack } from 'react-bootstrap'
 import './App.css'
 import Main from './components/pages/Main.jsx'
@@ -16,10 +16,14 @@ export default function App() {
       <Navbar expand="sm" variant="dark" fixed="top">
         <Container>
           <Navbar.Brand><Link to='/'>Feature Flicks</Link></Navbar.Brand>
-          <Stack direction="horizontal" gap={4}>
-            <CategorySelect selectClb={cat => setCatId(cat)} />
-            <TimeSortSelect sortChangeClb={order => setSortOrd(order)} />
-          </Stack>
+          {
+            useLocation().pathname === '/' ?
+            <Stack direction="horizontal" gap={4}>
+              <CategorySelect selectClb={cat => setCatId(cat)} />
+              <TimeSortSelect sortChangeClb={order => setSortOrd(order)} />
+            </Stack> :
+            ""
+          }
         </Container>
       </Navbar>
       <Container>
