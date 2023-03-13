@@ -1,5 +1,5 @@
 import './Booking.css'
-import AuditoriumBig from '../AuditoriumBig.jsx'
+import Auditorium from '../Auditorium.jsx'
 import RangeSenior from '../RangeSenior.jsx'
 import RangeChildren from '../RangeChildren.jsx'
 import Messenger from '../Messenger.jsx'
@@ -40,7 +40,7 @@ export default function Booking() {
 			{
 				(seats.length === 0 || occupiedScreenSeats.length === 0) ?
 					<Spinner animation="border" variant="warning" /> :
-					<AuditoriumBig seats={seats} occupiedScreeningSeats={occupiedScreenSeats} seatsBookClb={seats => {setSeatsSelected(seats)}}/>
+					<Auditorium seats={seats} occupiedScreeningSeats={occupiedScreenSeats} seatsBookClb={seats => {setSeatsSelected(seats)}}/>
 			}
 			<h3>Here you can select your seats and manage discounts.</h3>
 			<RangeSenior setSeniorsClb={s => setSeniors(s)}/>

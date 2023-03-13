@@ -1,5 +1,5 @@
 import Container from 'react-bootstrap/Container'
-import './AuditoriumBig.css'
+import './Auditorium.css'
 import Row from './Row.jsx'
 
 const seatsBooked = []
