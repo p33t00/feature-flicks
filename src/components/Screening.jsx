@@ -2,17 +2,13 @@ import { Image, Button, Card, Row, Col, Badge } from 'react-bootstrap'
 import { Link } from 'react-router-dom';
 import { formatDateTime } from '../lib/date-time-helper.js' 
 import './Screening.css'
-// import NODE_HILL from process.env.PUBLIC_URL + '/constants.js'
-// import Spider from '../assets/spider.jpeg'
-
-const NODE_HILL = 'https://cinema-rest.nodehill.se'
-
+import { NODE_HILL } from '../../env.js'
 
 export default function Screening({screening, movie}) {
-	const { posterImage, length, categories } = movie.description
+	const { posterImage, length, categories } = movie.description;
 	
 	return (
-  <Card className="screening">
+  	<Card className="screening">
       <Link to="/booking" state={{screening: screening}}>
       	<Card.Img src={NODE_HILL + posterImage} />
       </Link>
