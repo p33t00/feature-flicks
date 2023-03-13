@@ -13,16 +13,14 @@ export default function Main({catId, sortOrder}) {
   const [moviesXcat, setMoviesXcat] = useState([])
 
 	useEffect(() => {
-    if (!moviesXcat.length) (async () => setMoviesXcat(await getMoviesToCat()))();
+    (async () => setMoviesXcat(await getMoviesToCat()))();
 
-		if (!screenings.length) {
-      getScreenings().then(data => {
-        setScreenings(data)
-        setShownScreenings(data)
-      }, e => console.error(e))
-    } 
+    getScreenings().then(data => {
+      setScreenings(data)
+      setShownScreenings(data)
+    }, e => console.error(e));
 
-		if (!Object.keys(movies).length) {(async () => setMovies(await getMovies()))()};
+    (async () => setMovies(await getMovies()))();
 	}, [])
 
 
@@ -38,7 +36,7 @@ export default function Main({catId, sortOrder}) {
   }
 
 	return (
-    <Stack gap={4}>
+    <Stack gap={5}>
       {
         (shownScreenings.length && Object.keys(movies).length) ?
         shownScreenings.map(s => <Screening key={s.id} screening={s} movie={movies[s.movieId]} />) :
